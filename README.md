@@ -1,2 +1,2 @@
 # PassWordGen
-small QT application to ease password generation
+Small QT application to ease password generation. Linux Only.
