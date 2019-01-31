@@ -4,16 +4,16 @@
 #include <QMainWindow>
 
 namespace Ui {
-class MainWindow;
+class PassWordGen;
 }
 
-class MainWindow : public QMainWindow
+class PassWordGen : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit PassWordGen(QWidget *parent = nullptr);
+    ~PassWordGen();
 
 public slots:
     void generate();
@@ -23,7 +23,7 @@ signals:
     void passwordGenerated(QString newValue);
 
 private:
-    Ui::MainWindow *ui;
+    Ui::PassWordGen *ui;
 };
 
 #endif // MAINWINDOW_H

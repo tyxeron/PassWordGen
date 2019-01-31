@@ -26,10 +26,10 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+    passwordgen.cpp
 
 HEADERS += \
-        mainwindow.h
+    passwordgen.h
 
 FORMS += \
         mainwindow.ui

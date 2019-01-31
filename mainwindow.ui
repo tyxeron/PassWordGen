@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>PassWordGen</class>
+ <widget class="QMainWindow" name="PassWordGen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,16 +29,16 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>PassWordGen</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>90</y>
-      <width>391</width>
-      <height>162</height>
+      <width>381</width>
+      <height>176</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -46,47 +46,90 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLabel" name="LengthLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Length</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="lengthBox">
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
+        <widget class="QComboBox" name="lengthCombo">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="wrapping">
+         <property name="editable">
           <bool>true</bool>
          </property>
-         <property name="suffix">
-          <string/>
+         <item>
+          <property name="text">
+           <string>8</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>12</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>18</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>30</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>50</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>100</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>150</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>200</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="alphaNumCheckbox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="maximum">
-          <number>300</number>
+         <property name="layoutDirection">
+          <enum>Qt::RightToLeft</enum>
          </property>
-         <property name="stepType">
-          <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+         <property name="text">
+          <string>Alphanumeric Only</string>
          </property>
-         <property name="value">
-          <number>10</number>
+         <property name="tristate">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
       </layout>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="alphaNumCheckbox">
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-       <property name="text">
-        <string>Alphanumeric Only</string>
-       </property>
-       <property name="tristate">
-        <bool>false</bool>
-       </property>
-      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="generateButton">
@@ -112,24 +155,6 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>447</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -138,7 +163,7 @@
   <connection>
    <sender>generateButton</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>PassWordGen</receiver>
    <slot>generate()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -152,7 +177,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>MainWindow</sender>
+   <sender>PassWordGen</sender>
    <signal>passwordGenerated(QString)</signal>
    <receiver>passwordEdit</receiver>
    <slot>setText(QString)</slot>
@@ -170,7 +195,7 @@
   <connection>
    <sender>pasteButton</sender>
    <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>PassWordGen</receiver>
    <slot>copyclip()</slot>
    <hints>
     <hint type="sourcelabel">

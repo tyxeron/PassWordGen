@@ -1,21 +1,28 @@
-#include "mainwindow.h"
+#include "passwordgen.h"
 #include "ui_mainwindow.h"
 
 #include <QClipboard>
 
-MainWindow::MainWindow(QWidget *parent) :
+PassWordGen::PassWordGen(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::PassWordGen)
 {
     ui->setupUi(this);
+    this->setFixedSize(QSize(450, 400));
+
+    QValidator *validator = new QIntValidator(1, 999, this);
+
+    // the edit lineedit will only accept integers between 100 and 999
+    ui->lengthCombo->setValidator(validator);
+
 }
 
-MainWindow::~MainWindow()
+PassWordGen::~PassWordGen()
 {
     delete ui;
 }
 
-void MainWindow::generate(){
+void PassWordGen::generate(){
     std::string file_name = "result.txt" ;
     std::string alphNumOnlyCharset = "'A-Za-z0-9'";
     std::string extendedCharset = "'A-Za-z0-9!\"#$%&*+,-./:;<=>?@[\\]^_`{|}~()'"; //TODO  ADD '
@@ -24,7 +31,8 @@ void MainWindow::generate(){
     std::string lengthCommand ="| head -c ";
 
     bool alphaNumericalOnly=ui->alphaNumCheckbox->checkState();
-    int length =ui->lengthBox->value();
+    bool ok;
+    int length =ui->lengthCombo->currentText().toInt();
 
     if(alphaNumericalOnly){
         command.append(alphNumOnlyCharset);
@@ -57,7 +65,7 @@ void MainWindow::generate(){
 
 }
 
-void MainWindow::copyclip(){
+void PassWordGen::copyclip(){
     QClipboard *clipboard = QApplication::clipboard();
     const QString password = ui->passwordEdit->text();
 
